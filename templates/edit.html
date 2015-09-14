@@ -1,0 +1,103 @@
+
+		
+			
+			<div class="col-sm-offset-2" ng-app  ng-controller="editController">
+			<h3>edit User</h3>
+			
+				<form name="form"    novalidate>
+					<div class="form-group" 
+						ng-class="{ 'has-error' : form.name.$invalid && (form.name.$dirty || submitted)}">
+						
+						<input type="text" name="name"  class="form-control" ng-model="user.name" 
+						ng-required="true" ng-minlength="3" placeholder="Name" ng-maxlength="10"/>
+						<p ng-show="form.name.$error.required && (form.name.$dirty || submitted)" class="help-block">You name is required.</p>
+						<p ng-show="form.name.$error.minlength && (form.name.$dirty || submitted)" class="help-block">Name is too short</p>
+					</div>
+					<div class="form-group" 
+						ng-class="{'has-error' : form.username.$invalid && (form.username.$dirty || submitted)}">
+					
+						<input type="text" ng-minlength="3" ng-maxlength="10" name="username" class="form-control" ng-model="user.username"  placeholder="User name" ng-required="true" ng-unique="tableDB.userDBField"/>
+		
+						<p ng-show="form.username.$error.required && (form.username.$dirty || submitted)" class="help-block">You Username is required.</p>
+						<p ng-show="form.username.$error.minlength && (form.username.$dirty || submitted)" class="help-block">You Username is too Short.</p>
+						<p ng-show="form.username.$error.maxlength && (form.username.$dirty || submitted)" class="help-block">You Username is too long.</p>
+						
+					</div>
+					<div class="form-group"  
+						ng-class="{'has-error' : form.password.$invalid && (form.password.$dirty || submitted)}">
+					
+						<input type="password"  placeholder="Password" name="password" class="form-control" ng-model="user.password"
+						ng-required="true" ng-minlength="3" ng-maxlength="10" ng-pattern=""/>
+						<p ng-show="form.password.$error.required && (form.password.$dirty || submitted)" 
+						class="help-block">You password is required.</p>
+					</div>
+					<div class="form-group"  
+						ng-class="{'has-error' : form.cpassword.$invalid && (form.cpassword.$dirty || submitted)}">
+						
+						<input type="password" placeholder="Confirm Password" name="cpassword" class="form-control" ng-model="user.cpassword" ng-compare="password" ng-required="true" />
+						<p ng-show="form.cpassword.$error.required && (form.cpassword.$dirty || submitted)" class="help-block">You Cpassword is required.</p>
+						<p ng-show="form.cpassword.$error.compare  && (form.cpassword.$dirty || submitted)" class="help-block">Confirm password doesnot match.</p>
+					</div>
+					<div class="form-group"  
+						ng-class="{'has-error' : form.email.$invalid && (form.email.$dirty || submitted)}">
+						
+						<input type="email" placeholder="email" name="email" class="form-control" ng-model="user.email" ng-required="true" >
+						<p ng-show="form.email.$error.required && (form.email.$dirty || submitted)" class="help-block">You Email is required.</p>
+						<p ng-show="form.email.$error.email && (form.email.$dirty || submitted)" class="help-block">Enter a valid email.</p>
+					</div>
+					<div class="form-group"  
+						ng-class="{'has-error' : form.contactno.$invalid && (form.contactno.$dirty || submitted)}">
+					
+						<input type="text" placeholder="Contact No " name="contactno" class="form-control"  ng-pattern="/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/" ng-model="user.contactno" ng-required="true"/>
+						<p ng-show="form.contactno.$error.required && (form.contactno.$dirty || submitted)" class="help-block">Your contactno is required.</p>
+						<p ng-show="form.contactno.$error.pattern && (form.contactno.$dirty || submitted)" class="help-block">Your contactno is not valid.</p>
+					</div>
+					
+					<div class="form-group"  
+						ng-class="{'has-error' : form.country.$invalid && (form.country.$dirty || submitted)}">
+						
+						 <select class="form-control"   placeholer="select Country"                                                 
+                            ng-model="selectedCountryNames" name="country"                     
+                            ng-options="p.displayName for p in countryNames"
+							ng-required="true">                        
+                        </select>
+						<p ng-show ="form.country.$error.required  && (form.country.$dirty || submitted)" class="help-block">Select country.</p>
+					</div>
+					
+					<div class="form-group"  ng-class="{'has-error' : form.states.$invalid && (form.states.$dirty || submitted)}">
+					
+						<select class="form-control" name="states"                                                 
+                            ng-model="selectedStatesNames"                     
+                            ng-options="c.displayName for c in filteredArray | filter:{parentId: selectedCountryNames.id}"
+							ng-required="true">                        
+                        </select>
+						<p ng-show="form.states.$error.required  && (form.states.$dirty || submitted)" class="help-block">Select State.</p>
+					</div>
+					
+					<div class="form-group"  
+						ng-class="{'has-error' : form.city.$invalid && (form.city.$dirty || submitted)}">
+						
+						<select class="form-control" name="city"                                              
+                            ng-model="selectedCityNames"                        
+                            ng-options="g.displayName for g in cityNames | filter:{parentId: selectedStatesNames.id}"
+							ng-required="true">                        
+                        </select>
+						<p ng-show="form.city.$error.required && (form.city.$dirty || submitted)" class="help-block">You city is required.</p>
+					</div>
+					<div class="form-group" 
+						ng-class="{'has-error' : form.terms.$invalid && (form.terms.$dirty || submitted)}">
+						Accept Terms & Conditions <input type="checkbox" name="terms" ng-model="user.terms" ng-required="true"/>
+						<p ng-show="form.terms.$error.required && (form.terms.$dirty || submitted)" class="help-block">Accept terms & conditions.</p>
+					</div>
+					
+					<div>
+						
+						 <button  class="btn btn-primary ng-hide"  ng-hide='add_prod' ng-click="editSubmit(form.$valid)" >Save</button>
+						 
+		
+					</div>
+					
+				</form>
+				
+			</div>
+	

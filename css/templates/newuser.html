@@ -1,0 +1,72 @@
+<div data-ng-include="'templates/topmenuu.html'"></div>      
+        <div id="containerHolder">
+			<div id="container">              
+				<div data-ng-include="'templates/sidebar.html'"></div>                                  
+                                  
+                <!-- // #main -->
+				
+                <div id="main">                	
+					<h3>New User&nbsp;<span data-ng-bind="msg" style="color:red;font-size:12px;"></span></h3>
+                    	<form action="" method="post" name="newuser" id="newuser" autocomplete="off" novalidate>
+					<table id="hor-minimalist-a">
+						<thead>
+							<tr>        	
+								<td width="80px">Name</td>
+								<td>
+									<div class="input text">
+										<input name="name" id="name" type="text" data-ng-model="name" placeholder="Name" data-ng-minlength="3" required>
+										<span class="error" ng-show="newuser.name.$error.required">Required!</span>
+										<span class="error" ng-show="newuser.name.$error.minlength">Not less that 3 char</span>
+										<span class="valid" ng-show="newuser.name.$valid">Valid!</span>
+									</div>
+									
+								</td>
+							</tr>
+						</thead>
+						
+						<thead>
+							<tr>        	
+								<td>Email</td>
+								<td>
+									<div class="input email">
+										<input name="email" id="email" type="email" size="50" data-ng-model="email" placeholder="Email" required>
+										<span class="error" ng-show="newuser.email.$error.required">Required!</span>
+										<span class="error" ng-show="newuser.email.$error.email">Invalid Email!</span>
+										<span class="valid" ng-show="newuser.email.$valid">Valid!</span>
+									</div>
+								</td>
+							</tr>
+						</thead>
+						
+						<thead>
+							<tr>        	
+								<td>Mobile</td>
+								<td>
+									<div class="input text">
+										<input name="mobile" id="mobile" type="number" data-ng-model="mobile" placeholder="Mobile" required>
+										<span class="error" ng-show="newuser.mobile.$error.required">Required!</span>
+										<span class="error" ng-show="newuser.mobile.$error.number">Only Numbers</span>
+										<span class="valid" ng-show="newuser.mobile.$valid">Valid!</span>
+									</div>
+								</td>
+							</tr>
+						</thead>
+						
+						
+						
+						
+						
+						<thead>
+							<tr>
+								<td colspan="2" align="center"><input name="submit" type="submit" id="submitbutton" class="button&#x20;large&#x20;blue" value="Save" data-ng-disabled="newuser.$invalid" data-ng-click="submitForm()"></td>
+							</tr>
+						</thead>
+						
+					</table>
+					</form>
+                </div>                
+                <div class="clear"></div>
+            </div>
+            <!-- // #container -->
+        </div>	
+        <!-- // #containerHolder -->	

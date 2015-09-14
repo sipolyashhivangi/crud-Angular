@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	
+	<title>Administrator - Home</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+	   	<script src="js/app.js"></script>
+			<script src="js/dirPagination.js"></script>
+		
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/layout.css" rel="stylesheet">
+	<link href="css/sweet-alert.css" rel="stylesheet">
+	
+<script src="js/angular-local-storage.js"></script>
+</head>
+
+<body  ng-app="crudApp" style="margin-left:200px; width:800px;">
+
+	<a href="#/"><span><img src="img/angularjs.png" width="100px" height="103px"></span></a>
+        <div align="center" style="width:122px;height=103px;color:#54A144;font-weight:bold;">CRUD Operationsss</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+				<li><a href="#/listing"><i class="fa fa-shield"></i> manage users</a></li>
+				<li><a href="#/add"><i class="fa fa-comment"></i> Add User</a></li>
+				<li><a href="#/logout" ng-click="logout()" target="_self">Log Out</a></li></li>
+            </ul>
+		 
+			<div ng-view></div>
+		<script src="js/ng-sweet-alert.js" type="text/javascript"></script>
+
+</body>
+</html>

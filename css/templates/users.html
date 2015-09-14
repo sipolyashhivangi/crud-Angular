@@ -1,0 +1,42 @@
+<div data-ng-include="'templates/topmenuu.html'"></div>
+        <div id="containerHolder">
+			<div id="container">
+				<div data-ng-include="'templates/sidebar.html'"></div>
+
+                <!-- // #main -->
+                <div id="main">
+					<h3>Users</h3>
+                    Filter:
+                        <input type="text" name="search" id="search" ng-model="search" ng-change="filter()" placeholder="ID,Name,Email or Mobile" size="23" /><p></p>
+
+                    	<table cellpadding="0" cellspacing="0" id="userTableTr">
+							<tr>
+								<td><a ng-click="predicate='id';reverse=!reverse">ID</a></td>
+								<td><a ng-click="predicate='name';reverse=!reverse">Name</a></td>
+								<td><a ng-click="predicate='email';reverse=!reverse">Email</a></td>
+								<td><a ng-click="predicate='mobile';reverse=!reverse">Mobile</a></td>
+								<td class="action">Action</td>
+                            </tr>
+
+							<tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit" data-ng-class-odd="'odd'" data-ng-class-even="'even'" >
+								<td>{{ data.id }}</td>
+								<td>{{ data.name }}</td>
+								<td>{{ data.email }}</td>
+								<td>{{ data.mobile }}</td>
+								<td class="action"><a href="#/newuser/{{ data.id }}">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript://" data-ng-click="delete_user(data.id);">Delete</a>
+								</td>
+							</tr>
+                            <tr ng-show="filteredItems <= 0"><td align="center" colspan="5" style="color:red;font-weight:bold;">No records found.</td></tr>
+
+
+                        </table><br /><br />
+                        <div ng-show="filteredItems > 0">
+                            <div pagination="" max-size="10" ng-model="currentPage" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;" first-text="&lt;" last-text="&gt;" rotate="false">
+                            </div>
+                        </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!-- // #container -->
+        </div>
+        <!-- // #containerHolder -->

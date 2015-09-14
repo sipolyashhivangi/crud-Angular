@@ -1,0 +1,10 @@
+<div data-ng-controller="MenuController">
+<a href="#/"><span><img src="img/angularjs.png" width="100px" height="103px"></span></a>
+        <div align="center" style="width:122px;height=103px;color:#54A144;font-weight:bold;">CRUD Operations</div>
+<ul id="mainNav">        	
+        	<li><a href="#/" data-ng-class="{active:isActive('/')}">Home</a></li>
+			<li><a href="#/users" data-ng-class="{active:isActive('/users')}">Manage Users</a></li>
+			<li><a href="#/newuser" data-ng-class="{active:isActive('/newuser')}">Add User</a></li>
+        	<li class="logout"><a href="javascript://" data-ng-click="logoutnow()">Logout</a></li>
+</ul>
+</div>

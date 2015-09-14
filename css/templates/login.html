@@ -1,0 +1,16 @@
+<div>
+	<form action="" method="post" name="login" id="login" autocomplete="off" novalidate>
+		<label for="username">Username</label>
+		<span class="error" ng-show="login.username.$error.required">Required!</span>
+		<span class="error" ng-show="login.username.$error.minlength">Not less that 3 char</span>
+		<span class="valid" ng-show="login.username.$valid">Valid!</span>
+		<input name="username" type="text" id="username" data-ng-model="username" placeholder="User Name" data-ng-minlength="3" required>
+
+		<label for="password">Password</label>
+		<span class="error" ng-show="login.password.$error.required">Required!</span>
+		<span class="error" ng-show="login.password.$error.minlength">Not less that 3 char</span>
+		<span class="valid" ng-show="login.password.$valid">Valid!</span>
+		<input name="password" type="password" id="password" data-ng-model="password" placeholder="Password" required>
+		<div id="lower"><input type="submit" name="submit" id="submitbutton" value="Login" data-ng-disabled="login.$invalid" data-ng-click="submitloginForm()"></div>
+	</form>
+</div>
